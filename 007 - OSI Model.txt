@@ -1,0 +1,57 @@
+I. What is the OSI Model?
+
+ - Problem it solves:
+    + Old networks (like IBM-only systems) couldn’t talk to each other → expensive and limited.
+    + Needed a universal standard so all devices/networks communicate seamlessly.
+
+ - Created by:
+    + ISO (International Organization for Standardization) in 1978, updated in 1984.
+    + Called OSI (Open Systems Interconnection) model.
+
+II. The 7 Layers (Always in This Order!)
+
+    Layer	            Nickname	            Key Job	Real-World Example
+
+    1. Physical	        "The Cable"	            Sends 1s & 0s as electricity/light/radio signals. - Bits
+                                                Example: Ethernet cables, Wi-Fi signals
+
+    2. Data Link	    "The Mailman"	        Uses MAC addresses to deliver "frames" of data. - Frames
+                                                Example: Switches, MAC addresses (e.g., AA:BB:CC:DD:EE:FF)
+
+    3. Network	        "The GPS"	            Uses IP addresses to route "packets" across networks. - Packet
+                                                Example: Routers, IP addresses (e.g., 192.168.1.1)
+
+    4. Transport	    "The Post Office"	    Splits data into segments. Manages flow control. Uses TCP/UDP. - Segment	
+                                                TCP (reliable), UDP (fast streaming)
+
+    5. Session	        "The Conductor"	        Starts, manages, ends connections. - Data
+                                                Example: FTP sessions, Zoom calls
+
+    6. Presentation	    "The Translator"	    Makes data readable (encodes/decodes formats). Handles encryption. - Data
+                                                Example: JPEG images, encrypted files (HTTPS)
+
+    7. Application	    "The App"	            Where user programs live (e.g., browsers, email). Uses APIs. - Data
+                                                Example: Chrome, Outlook, APIs
+
+III. How Data Travels (FTP Example)
+
+    User sends a file:
+
+        [Server]                                             [Your PC]
+        Layer 7: HTTP Response (HTML)                        → Layer 7: Browser renders HTML
+        Layer 6: Encrypt (HTTPS)                             → Layer 6: Decrypt
+        Layer 5: Session ID                                  → Layer 5: Session ID
+        Layer 4: TCP Segments (Port 80 → Your Port)          → Layer 4: TCP Reassembly
+        Layer 3: IP Packet (Server IP → Your IP)             → Layer 3: IP Check
+        Layer 2: Frame (To: Router MAC)                      → Layer 2: Frame (To: Your MAC)
+        Layer 1: Bits over fiber                             → Layer 1: Bits over Wi-Fi
+                │                                                    ▲
+                ▼                                                    │
+        [Server's NIC] → [Router] → [Internet] --------------> [Your Router] → [Your PC's NIC]
+
+IV.  Key Points
+    - Why it matters: Without OSI, your iPhone couldn’t talk to a Windows PC!
+    - TCP/IP model is a simplified version (4 layers instead of 7).
+    - Each layer adds "headers" (like address labels) to data → called PDUs (Protocol Data Units).
+    - Network pros use this to troubleshoot ("Is the problem at Layer 3 or Layer 7?").
+
